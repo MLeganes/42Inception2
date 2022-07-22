@@ -1,7 +1,9 @@
 version: '3.5'
 
 networks:
-  localhost: { }
+  defatul:
+  inception-net:
+    name: inception-net
 
 volumes:
   wordpress_dir:
@@ -25,9 +27,9 @@ services:
     volumes:
       - mariadb_dir:/var/lib/mysql
     networks:
-      - localhost
-    env_file: .env
+      - inception-net
     restart: always
+    env_file: .env
   
   wordpress:
     build:
@@ -37,7 +39,7 @@ services:
     depends_on:
       - mariadb
     networks:
-      - localhost
+      - inception-net
     restart: always
     env_file: .env
   
@@ -51,4 +53,4 @@ services:
       - wordpress
     restart: always
     networks:
-      - localhost
+      - inception-net
