@@ -36,8 +36,7 @@ services:
   wordpress:
     image: inception-wordpress
     container_name: wordpress
-    build:
-      context: ./requirements/wordpress
+    build: git ./requirements/wordpress
     volumes:
       - wordpress_dir:/var/www/html
     depends_on:
