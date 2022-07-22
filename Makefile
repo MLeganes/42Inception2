@@ -1,9 +1,13 @@
-all:
-#	mkdir -p ./srcs/requirements/mariadb/database
-#	mkdir -p ./srcs/requirements/wordpress/content
+build:
 	mkdir -p ./data/wordpress/content
 	mkdir -p ./data/mariadb/database
+	sudo docker-compose -f ./srcs/docker-compose.yml build
+
+up:
 	sudo docker compose -f ./srcs/docker-compose.yml up
+
+stop:
+	sudo docker-compose -f ./srcs/docker-compose.yml stop
 
 clean:
 	sudo docker-compose -f ./srcs/docker-compose.yml down
@@ -11,16 +15,7 @@ clean:
 fclean:
 	sudo docker-compose -f ./srcs/docker-compose.yml down --volumes --rmi all
 
-re: fclean all
-
-nginx:
-	sudo docker-compose -f ./srcs/docker-compose.yml build nginx
-
-wordpress:
-	sudo docker-compose -f ./srcs/docker-compose.yml build wordpress
-
 mariadb:
-	sudo docker-compose -f ./srcs/docker-compose.yml build mariadb
+	sudo mysql -h 127.0.0.1 -P 3306 -u wp_user -pa wp_data
 
-build:
-	sudo docker-compose -f ./srcs/docker-compose.yml build
+re: fclean up

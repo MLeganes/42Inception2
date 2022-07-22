@@ -1,12 +1,5 @@
-# if [ ! -d "/var/lib/mysql/wordpress_data" ]; then
-echo "before dir does not exist"
-echo "hola"
-echo $DB_NAME
-echo ${DB_NAME}
-echo "hola"
-
-# service mysql start
-
+if [ ! -d "/var/lib/mysql/wordpress_data" ]; then
+echo "MariaDB: creating database ${DB_NAME} and user ${DB_USER}"
 service mysql start
 sleep 1
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS $DB_NAME"
@@ -24,10 +17,8 @@ mysql -u root -e "FLUSH PRIVILEGES"
 
 service mysql stop 
 sleep 1
-echo "done dir does not exist"
 
-# else
-echo "before dir does exist"
-# fi
-
+else
+echo "MariaDB: database ${DB_NAME} exist and user ${DB_USER} exist"
+fi
 mysqld_safe
