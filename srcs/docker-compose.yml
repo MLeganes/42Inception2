@@ -1,7 +1,7 @@
 version: '3.5'
 
 networks:
-  defatul:
+  default:
   inception-net:
     name: inception-net
 
@@ -10,20 +10,20 @@ volumes:
     name: wordpress_dir
     driver: local
     driver_opts:
-      device: /home/amorcill/2-inception2/data/wordpress/content
+      device: /home/amorcill/inception/data/wordpress/content
       o: bind
       type: none
   mariadb_dir:
     name: mariadb_dir
     driver: local
     driver_opts:
-      device: /home/amorcill/2-inception2/data/mariadb/database
+      device: /home/amorcill/inception/data/mariadb/database
       o: bind
       type: none
 
 services:
   mariadb:
-    imagen: inception-mariadb
+    image: inception-mariadb
     container_name: mariadb
     build: ./requirements/mariadb
     volumes:
@@ -36,7 +36,7 @@ services:
   wordpress:
     image: inception-wordpress
     container_name: wordpress
-    build: git ./requirements/wordpress
+    build: ./requirements/wordpress
     volumes:
       - wordpress_dir:/var/www/html
     depends_on:
