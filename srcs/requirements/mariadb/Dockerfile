@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:buster-20220711
 
 RUN apt-get update -y
 RUN apt-get upgrade -y

@@ -8,12 +8,18 @@ wp core install --allow-root \
 				--title=42Inception \
 				--admin_user=$WP_USER \
 				--admin_password=$WP_PASS \
-				--admin_email=info@example.com
+				--admin_email=$WP_USER_EMAIL
 
 wp core config	--dbhost=$DB_HOST \
 				--dbname=$DB_NAME \
 				--dbuser=$DB_USER \
 				--dbpass=$DB_PASS \
+				--allow-root
+
+wp user create	$WP_USER2 \
+				$WP_USER2_EMAIL \
+				--role=author \
+				--user_pass=$WP_USER2 \
 				--allow-root
 
 mkdir /run/php
