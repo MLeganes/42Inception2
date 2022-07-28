@@ -4,7 +4,7 @@ build:
 	sudo docker-compose -f ./srcs/docker-compose.yml build
 
 up:
-	sudo docker compose -f ./srcs/docker-compose.yml up
+	sudo docker compose -f ./srcs/docker-compose.yml up -d
 
 stop:
 	sudo docker-compose -f ./srcs/docker-compose.yml stop
