@@ -15,9 +15,6 @@ clean:
 fclean:
 	sudo docker-compose -f ./srcs/docker-compose.yml down --volumes --rmi all
 
-mariadb:
-	sudo mysql -h 127.0.0.1 -P 3306 -u amorcill -pa pass
-
 re: fclean up
 
 clean-all:
