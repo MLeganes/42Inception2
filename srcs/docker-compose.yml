@@ -60,13 +60,14 @@ services:
     networks:
       - inception-net
   
-  # adminer:
-  #   image: inception-adminer
-  #   container_name: adminer
-  #   build: ./requirements/adminer
-  #   depends_on:
-  #     - mariadb
-  #   restart: always
-  #   networks:
-  #     - inception-net
-    
+  adminer:
+    image: inception-adminer
+    container_name: adminer
+    build: ./requirements/adminer
+    depends_on:
+      - mariadb
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - inception-net
