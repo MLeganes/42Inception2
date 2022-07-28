@@ -16,11 +16,11 @@ wp core config	--dbhost=$DB_HOST \
 				--dbpass=$DB_PASS \
 				--allow-root
 
-wp user create	$WP_USER2 \
+wp user create	--allow-root \
+				$WP_USER2 \
 				$WP_USER2_EMAIL \
 				--role=author \
 				--user_pass=$WP_USER2 \
-				--allow-root
 
 mkdir /run/php
 cd -
